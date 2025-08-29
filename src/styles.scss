@@ -1,1 +1,146 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+@import "./scss/variables";
+@import "./scss/base";
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+$m-blue-palette: (
+  50: #e5f3ff,
+  100: #cfe9ff,
+  200: #a9d4ff,
+  300: #75b4ff,
+  400: #3f83ff,
+  500: #1452ff,
+  600: #003aff,
+  700: #003bff,
+  800: #0022ad,
+  900: #001166,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+  ),
+);
+
+$m-yellow-palette: (
+  50: #fefbe8,
+  100: #fef7c3,
+  200: #fdec8b,
+  300: #fcd948,
+  400: #f9c51a,
+  500: #e9ab09,
+  600: #c98405,
+  700: #a05d08,
+  800: #84490f,
+  900: #421e06,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+  ),
+);
+
+$interbank-challengue-primary: mat.m2-define-palette(
+  $m-blue-palette,
+  800,
+  400,
+  900
+);
+
+$interbank-challengue-secondary: mat.m2-define-palette(
+  $m-yellow-palette,
+  400,
+  100,
+  900
+);
+
+$m-red-palette: (
+  50: #ffe7e6,
+  100: #ffc8b9,
+  200: #ffa38b,
+  300: #ff7b5d,
+  400: #ff5838,
+  500: #ff2b12,
+  600: #ff230e,
+  700: #fc1706,
+  800: #ee0000,
+  900: #d70000,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+  ),
+);
+$interbank-challengue-error: mat.m2-define-palette(
+  $m-red-palette,
+  800,
+  900,
+  50
+);
+
+// Define the theme object.
+$interbank-challengue-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $interbank-challengue-primary,
+      accent: $interbank-challengue-secondary,
+      warn: $interbank-challengue-error,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.core-theme($interbank-challengue-theme);
+  @include mat.button-theme($interbank-challengue-theme);
+  @include mat.icon-button-theme($interbank-challengue-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($interbank-challengue-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($interbank-challengue-theme);
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

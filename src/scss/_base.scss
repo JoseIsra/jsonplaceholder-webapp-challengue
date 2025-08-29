@@ -1,0 +1,121 @@
+@import "./primeng-styles";
+
+// .flex {
+//   display: flex;
+// }
+
+// .flex-col {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .align-center {
+//   align-items: center;
+// }
+// .align-end {
+//   align-items: end;
+// }
+
+// .justify-center {
+//   justify-content: center;
+// }
+
+// .justify-evenly {
+//   justify-content: space-evenly;
+// }
+
+// .justify-end {
+//   justify-content: flex-end;
+// }
+
+// .justify-around {
+//   justify-content: space-around;
+// }
+
+// .justify-between {
+//   justify-content: space-between;
+// }
+
+// .text-title {
+//   font-family: 'sonoma-bold';
+// }
+
+// .text-subtitle {
+//   font-family: 'sonoma-semibold';
+// }
+
+.w-full {
+  width: 100%;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.error {
+  font-size: var(--size-14);
+  color: var(--error-alert-500);
+}
+
+.white-nowrap {
+  white-space: nowrap;
+}
+
+$font-weights: (
+  100: 100,
+  200: 200,
+  300: 300,
+  400: 400,
+  500: 500,
+  600: 600,
+  700: 700,
+);
+
+@mixin font-weights {
+  @each $val, $size in $font-weights {
+    .fw-#{$val} {
+      font-weight: $size;
+    }
+  }
+}
+
+$line-heights: (
+  10: 10px,
+  12: 12px,
+  14: 14px,
+  16: 16px,
+  18: 18px,
+  20: 20px,
+  22: 22px,
+  24: 24px,
+  26: 26px,
+  28: 28px,
+);
+
+@mixin line-heights {
+  @each $val, $size in $line-heights {
+    .line-height-#{$val} {
+      line-height: $size;
+    }
+  }
+}
+
+:root {
+  // mixins
+  @include font-weights;
+  @include line-heights;
+}
+.mdc-button__label {
+  font-family: "sonoma-semibold", sans-serif !important;
+}
+
+.mdc-button--outlined {
+  .mdc-button__label {
+    font-family: "sonoma", sans-serif !important;
+    font-weight: 500;
+  }
+}
