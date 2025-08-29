@@ -1,0 +1,20 @@
+.layout {
+  display: flex;
+  background-color: var(--gray-400);
+  aside {
+    display: none;
+    @media (width >=1024px) {
+      display: block;
+    }
+  }
+  main {
+    --main-margin-left: 0;
+    margin-left: var(--main-margin-left);
+    min-height: 100vh;
+    width: calc(100% - var(--main-margin-left));
+    padding: 20px;
+    @media (width >=1024px) {
+      --main-margin-left: 210px;
+    }
+  }
+}

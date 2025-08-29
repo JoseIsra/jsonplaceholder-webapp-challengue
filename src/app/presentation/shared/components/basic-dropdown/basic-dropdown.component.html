@@ -1,0 +1,22 @@
+<div class="basicDrop">
+  @if (label().length > 0) {
+    <div class="basicDrop-labelBox">
+      <span> {{ label() }} </span>
+    </div>
+  }
+  <p-select
+    [options]="options()"
+    [(ngModel)]="value"
+    optionLabel="name"
+    styleClass="filter-dropdown"
+    [placeholder]="placeholder()"
+    (ngModelChange)="onChange($event)"
+    [disabled]="isDisabled"
+  >
+  </p-select>
+  @if (showError()) {
+    <mat-error>
+      <span class="error">{{ errorMsg() }}</span>
+    </mat-error>
+  }
+</div>

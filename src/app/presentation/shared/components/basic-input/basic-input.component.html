@@ -1,0 +1,19 @@
+<div class="wrapper flex flex-col">
+  @if (label().length > 0) {
+    <span class="label">{{ label() }}</span>
+  }
+  <div class="inner-wrapper" [class.--error]="showError()">
+    <input
+      #inputElement
+      data-testid="test-input"
+      class="input"
+      [placeholder]="placeholder()"
+      [type]="type()"
+      [value]="value()"
+      (input)="handleInputChanged($event)"
+    />
+  </div>
+  @if (showError()) {
+    <mat-error class="error"> {{ errorMsg() }} </mat-error>
+  }
+</div>
