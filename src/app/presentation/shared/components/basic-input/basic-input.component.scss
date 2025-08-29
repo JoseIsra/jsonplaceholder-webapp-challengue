@@ -1,0 +1,76 @@
+.wrapper {
+  gap: 6px;
+  .label {
+    color: var(--gray-500);
+    font-size: var(--size-14);
+  }
+
+  .inner-wrapper {
+    border-radius: var(--size-8);
+    border: 1px solid var(--gray-700);
+    background-color: var(--light-500);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease;
+    position: relative;
+
+    &.--error {
+      border-color: var(--error-alert-500);
+      &:focus-within {
+        box-shadow: unset;
+      }
+    }
+    &:not(.--error):focus-within {
+      outline: 1px solid var(--primary-color);
+      box-shadow: 0 0 0 1px var(--primary-color-500);
+    }
+    &:not(.--error):hover {
+      border-color: var(--primary-color-400);
+    }
+    .toggle-btn {
+      .mat-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  input {
+    font-size: var(--size-16);
+    color: var(--black-400);
+    outline: none;
+    border: none;
+    width: 100%;
+    caret-color: var(--primary-color);
+    padding-right: 20px;
+    background-color: transparent;
+    &::placeholder {
+      color: var(--gray-500);
+      font-family: 'sonoma', sans-serif;
+    }
+  }
+  .error {
+    position: relative;
+    margin-left: 20px;
+    font-size: var(--size-14);
+    color: var(--error-alert-500);
+  }
+}
+
+::ng-deep .p-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  &.p-button-sm {
+    font-size: 13px;
+    padding: 4px;
+  }
+  &.p-button-outlined {
+    color: var(--gray-600);
+  }
+  &:focus {
+    box-shadow: unset;
+  }
+}

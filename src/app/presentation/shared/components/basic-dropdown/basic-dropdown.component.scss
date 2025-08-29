@@ -1,0 +1,25 @@
+.basicDrop {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  &-labelBox {
+    display: flex;
+    justify-content: space-between;
+    span {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 600;
+      color: var(--black);
+    }
+  }
+  .error {
+    font-size: 14px;
+  }
+  ::ng-deep .filter-dropdown {
+    width: 100%;
+    padding: 0.5px;
+  }
+  ::ng-deep .p-dropdown-items-wrapper {
+    width: var(--width, 100%);
+  }
+}

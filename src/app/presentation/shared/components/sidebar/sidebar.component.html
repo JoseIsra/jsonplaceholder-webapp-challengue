@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <div class="sidebar-brand">Challengue</div>
+  <div class="sidebar-itemsBox">
+    <ul class="sidebar-items">
+      @for (item of items; track item.id) {
+        <li class="sidebar-item">
+          <a [routerLink]="item.url" routerLinkActive="active">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
