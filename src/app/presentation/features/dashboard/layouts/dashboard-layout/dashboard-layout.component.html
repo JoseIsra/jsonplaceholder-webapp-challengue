@@ -5,6 +5,16 @@
     </nav>
   </aside>
   <main>
+    <div class="layout-header flex items-center justify-end">
+      <button mat-button (click)="donwloadFile('CTS')">
+        <mat-icon svgIcon="pdf" />
+        Ver CTS
+      </button>
+      <button mat-button (click)="donwloadFile('CASA')">
+        <mat-icon svgIcon="pdf" />
+        Ver Ahorro Casa
+      </button>
+    </div>
     <router-outlet />
   </main>
 </section>

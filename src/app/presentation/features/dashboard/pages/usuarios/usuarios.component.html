@@ -1,3 +1,60 @@
-<p>
-  usuarios works!
-</p>
+<div class="container">
+  <div class="container-header flex items-center justify-between">
+    <h1 class="m-0">Usuarios</h1>
+    <div class="filter">
+      <app-basic-input
+        [(ngModel)]="userSearchControl"
+        placeholder="Buscar por nombre"
+        (ngModelChange)="handleSearchingUser($event)"
+      >
+        <mat-icon svgIcon="search" />
+      </app-basic-input>
+    </div>
+  </div>
+  <section class="container-data flex flex-col">
+    <ng-container
+      [ngTemplateOutlet]="loading() ? loadingTemplate : tabledataTemplate"
+    />
+  </section>
+</div>
+
+<ng-template #tabledataTemplate>
+  @if (filteredUsers$ | async; as filteredUsers) {
+    <app-data-table [data]="filteredUsers" [rows]="ITEMS_PER_PAGE">
+      <ng-template #headerTemplate>
+        <tr>
+          <th>Nombre</th>
+          <th>Usuario</th>
+          <th>Correo</th>
+          <th>Telefono</th>
+          <th>Opciones</th>
+        </tr>
+      </ng-template>
+
+      <ng-template #bodyTemplate let-item>
+        <td>{{ item.name }}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.phone }}</td>
+        <td>
+          <button mat-icon-button (click)="handleOpeUserDetails(item.id)">
+            <mat-icon svgIcon="view" />
+          </button>
+        </td>
+      </ng-template>
+    </app-data-table>
+    <div class="container-paginator">
+      <app-paginator
+        [(ngModel)]="currentPage"
+        [totalItems]="totalUsers().length"
+        [rows]="ITEMS_PER_PAGE"
+        (ngModelChange)="onPageChange($event)"
+      ></app-paginator>
+    </div>
+  } @else {
+    <span>Cargando...</span>
+  }
+</ng-template>
+<ng-template #loadingTemplate>
+  <p>Cargando...</p>
+</ng-template>

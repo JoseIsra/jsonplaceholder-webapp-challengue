@@ -1,0 +1,15 @@
+<div class="paginator">
+  <span class="paginator-hint">N° de páginas:</span>
+  @for (page of pages(); track page) {
+    <button
+      class="paginator-item"
+      [class.active]="value().page === page"
+      [disabled]="pages().length === MINIMUM_PAGE"
+      (click)="onPageChange(page)"
+    >
+      <span>
+        {{ page }}
+      </span>
+    </button>
+  }
+</div>

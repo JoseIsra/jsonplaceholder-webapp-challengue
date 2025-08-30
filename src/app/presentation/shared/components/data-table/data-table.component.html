@@ -1,3 +1,23 @@
-<p>
-  data-table works!
-</p>
+<div class="wrapper">
+  <table>
+    <thead>
+      @if (headerTemplate) {
+        <ng-container [ngTemplateOutlet]="headerTemplate" />
+      }
+    </thead>
+    <tbody>
+      @for (item of data(); track $index) {
+        <tr>
+          @if (bodyTemplate) {
+            <ng-container
+              [ngTemplateOutlet]="bodyTemplate"
+              [ngTemplateOutletContext]="{ $implicit: item }"
+            />
+          }
+        </tr>
+      } @empty {
+        <span>Sin datos</span>
+      }
+    </tbody>
+  </table>
+</div>

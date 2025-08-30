@@ -10,6 +10,8 @@ import { providePrimeNG } from 'primeng/config';
 import { NgMaterialModule } from './presentation/shared/externals/ng-material/ng-material.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import MyCustomPreset from './presentation/shared/externals/custom-preset';
+import { DomainModule } from './domain/domain.module';
+import { DialogService } from 'primeng/dynamicdialog';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +19,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    importProvidersFrom(NgMaterialModule.forRoot()),
+    importProvidersFrom([NgMaterialModule.forRoot(), DomainModule.forRoot()]),
+    DialogService,
     providePrimeNG({
       theme: {
         preset: MyCustomPreset,

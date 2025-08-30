@@ -1,0 +1,15 @@
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &-hint {
+    font-size: 14px;
+  }
+  &-item {
+    &.active {
+      color: var(--primary-color-500);
+    }
+  }
+}

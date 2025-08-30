@@ -1,48 +1,41 @@
 @import "./primeng-styles";
 
-// .flex {
-//   display: flex;
-// }
+.flex {
+  display: flex;
+}
 
-// .flex-col {
-//   display: flex;
-//   flex-direction: column;
-// }
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
 
-// .align-center {
-//   align-items: center;
-// }
-// .align-end {
-//   align-items: end;
-// }
+.align-center {
+  align-items: center;
+}
 
-// .justify-center {
-//   justify-content: center;
-// }
+.align-end {
+  align-items: end;
+}
 
-// .justify-evenly {
-//   justify-content: space-evenly;
-// }
+.justify-center {
+  justify-content: center;
+}
 
-// .justify-end {
-//   justify-content: flex-end;
-// }
+.justify-evenly {
+  justify-content: space-evenly;
+}
 
-// .justify-around {
-//   justify-content: space-around;
-// }
+.justify-end {
+  justify-content: flex-end;
+}
 
-// .justify-between {
-//   justify-content: space-between;
-// }
+.justify-around {
+  justify-content: space-around;
+}
 
-// .text-title {
-//   font-family: 'sonoma-bold';
-// }
-
-// .text-subtitle {
-//   font-family: 'sonoma-semibold';
-// }
+.justify-between {
+  justify-content: space-between;
+}
 
 .w-full {
   width: 100%;
@@ -54,15 +47,6 @@
 
 .p-0 {
   padding: 0;
-}
-
-.error {
-  font-size: var(--size-14);
-  color: var(--error-alert-500);
-}
-
-.white-nowrap {
-  white-space: nowrap;
 }
 
 $font-weights: (
@@ -83,39 +67,6 @@ $font-weights: (
   }
 }
 
-$line-heights: (
-  10: 10px,
-  12: 12px,
-  14: 14px,
-  16: 16px,
-  18: 18px,
-  20: 20px,
-  22: 22px,
-  24: 24px,
-  26: 26px,
-  28: 28px,
-);
-
-@mixin line-heights {
-  @each $val, $size in $line-heights {
-    .line-height-#{$val} {
-      line-height: $size;
-    }
-  }
-}
-
 :root {
-  // mixins
   @include font-weights;
-  @include line-heights;
-}
-.mdc-button__label {
-  font-family: "sonoma-semibold", sans-serif !important;
-}
-
-.mdc-button--outlined {
-  .mdc-button__label {
-    font-family: "sonoma", sans-serif !important;
-    font-weight: 500;
-  }
 }
