@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <div class="w-full flex align-center justify-between">
+    <p class="fw-500 title m-0">{{ dialogTitle() }}</p>
+    <button mat-icon-button type="button" (click)="closeDialog()">
+      <mat-icon svgIcon="close" />
+    </button>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="handleSubmitForm()">
+    <app-basic-input
+      label="Título"
+      formControlName="title"
+      placeholder="Título"
+    ></app-basic-input>
+    <app-basic-input
+      label="Contenido"
+      formControlName="body"
+      placeholder="Contenido"
+    ></app-basic-input>
+    <app-basic-dropdown
+      label="Usuario"
+      formControlName="user"
+      placeholder="Seleccionar"
+      [options]="userOptions"
+      optionValue="id"
+    ></app-basic-dropdown>
+
+    <div class="action">
+      <button mat-button [disabled]="isSubmitDisabled" type="submit">
+        {{ buttonLabel() }}
+      </button>
+    </div>
+  </form>
+</div>

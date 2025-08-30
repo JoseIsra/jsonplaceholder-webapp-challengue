@@ -118,7 +118,10 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     const slicedUsers =
       paginator.page === paginator.lastPage
         ? this.userStoreService.totalUsers.slice(newPage)
-        : this.userStoreService.totalUsers.slice(newPage, this.ITEMS_PER_PAGE);
+        : this.userStoreService.totalUsers.slice(
+            newPage,
+            newPage + this.ITEMS_PER_PAGE,
+          );
 
     this.userStoreService.setUsers(slicedUsers);
   }

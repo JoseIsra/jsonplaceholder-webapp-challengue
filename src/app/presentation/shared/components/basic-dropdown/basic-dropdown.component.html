@@ -8,9 +8,10 @@
     [options]="options()"
     [(ngModel)]="value"
     optionLabel="name"
-    styleClass="filter-dropdown"
+    appendTo="body"
     [placeholder]="placeholder()"
     (ngModelChange)="onChange($event)"
+    [optionValue]="optionValue()"
     [disabled]="isDisabled"
   >
   </p-select>
