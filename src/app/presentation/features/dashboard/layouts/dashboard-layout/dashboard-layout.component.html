@@ -5,16 +5,47 @@
     </nav>
   </aside>
   <main>
-    <div class="layout-header flex items-center justify-end">
-      <button mat-button (click)="donwloadFile('CTS')">
-        <mat-icon svgIcon="pdf" />
-        Ver CTS
-      </button>
-      <button mat-button (click)="donwloadFile('CASA')">
-        <mat-icon svgIcon="pdf" />
-        Ver Ahorro Casa
-      </button>
+    <div class="layout-header">
+      <div class="layout-hamburger">
+        <button mat-icon-button>
+          <mat-icon svgIcon="hamburger" (click)="handleOpenMobileSidebar()" />
+        </button>
+      </div>
+      <div class="layout-files flex align-center justify-end">
+        <button mat-button (click)="donwloadFile('CTS')">
+          <mat-icon svgIcon="pdf" />
+          Ver CTS
+        </button>
+        <button mat-button (click)="donwloadFile('CASA')">
+          <mat-icon svgIcon="pdf" />
+          Ver Ahorro Casa
+        </button>
+      </div>
     </div>
     <router-outlet />
   </main>
 </section>
+<p-dialog
+  [(visible)]="mobileSidebarDialogVisible"
+  [modal]="true"
+  [showHeader]="false"
+  position="left"
+  [dismissableMask]="true"
+  [draggable]="false"
+  (onHide)="handleCloseMobileSidebar()"
+>
+  <ng-template pTemplate="headless">
+    <div class="mobile-sidebar">
+      <div class="w-full flex align-center justify-end">
+        <button
+          mat-icon-button
+          type="button"
+          (click)="handleCloseMobileSidebar()"
+        >
+          <mat-icon svgIcon="close" />
+        </button>
+      </div>
+      <app-sidebar />
+    </div>
+  </ng-template>
+</p-dialog>

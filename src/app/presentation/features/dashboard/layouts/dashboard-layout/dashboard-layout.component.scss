@@ -13,13 +13,30 @@
     min-height: 100vh;
     width: calc(100% - var(--main-margin-left));
     padding: 20px;
+    flex: 1;
     @media (width >=1024px) {
       --main-margin-left: 210px;
     }
   }
 
   &-header {
+    @media (width <=1024px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &-hamburger {
+    display: block;
+    @media (width >=1024px) {
+      display: none;
+    }
+  }
+
+  &-files {
     gap: 1rem;
+
     button {
       border: 1px solid var(--primary-color);
       border-radius: 8px;
@@ -27,4 +44,11 @@
       font-size: 16px;
     }
   }
+}
+
+.mobile-sidebar {
+  padding: 20px;
+  width: 315px;
+  height: 100dvh;
+  background-color: var(--white);
 }

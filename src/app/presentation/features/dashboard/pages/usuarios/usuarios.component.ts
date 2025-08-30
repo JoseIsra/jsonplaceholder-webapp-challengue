@@ -25,6 +25,7 @@ import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { BasicInputComponent } from '@/presentation/shared/components/basic-input/basic-input.component';
 import { textNormalizer } from '@/data/utils/helpers';
 import { UserDto } from '@/data/dtos/users/users.response.dto';
+import { UsersCardComponent } from './components/users-card/users-card.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -39,6 +40,7 @@ import { UserDto } from '@/data/dtos/users/users.response.dto';
     NgTemplateOutlet,
     BasicInputComponent,
     AsyncPipe,
+    UsersCardComponent,
   ],
   standalone: true,
 })

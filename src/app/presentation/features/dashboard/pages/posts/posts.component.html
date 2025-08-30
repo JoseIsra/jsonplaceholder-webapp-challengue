@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="container-header flex items-center justify-between">
-    <h1 class="m-0">Posts</h1>
+  <div class="container-header flex align-center justify-between">
+    <span class="m-0">Posts</span>
     <div class="create">
       <button mat-button (click)="handleCreatePost()">Crear Post</button>
     </div>
@@ -13,27 +13,33 @@
 </div>
 
 <ng-template #tabledataTemplate>
-  <app-data-table [data]="postsList()" [rows]="ITEMS_PER_PAGE">
-    <ng-template #headerTemplate>
-      <tr>
-        <th>Título</th>
-        <th>Contenido</th>
-        <th>Creado por</th>
-        <th>Opciones</th>
-      </tr>
-    </ng-template>
+  <div class="desktop">
+    <app-data-table [data]="postsList()" [rows]="ITEMS_PER_PAGE">
+      <ng-template #headerTemplate>
+        <tr>
+          <th>Título</th>
+          <th>Contenido</th>
+          <th>Creado por</th>
+          <th>Opciones</th>
+        </tr>
+      </ng-template>
 
-    <ng-template #bodyTemplate let-item>
-      <td>{{ item.title }}</td>
-      <td>{{ item.body }}</td>
-      <td>Usuario {{ item.userId }}</td>
-      <td class="flex">
-        <button mat-icon-button (click)="handleEditPost(item)">
-          <mat-icon svgIcon="edit" />
-        </button>
-      </td>
-    </ng-template>
-  </app-data-table>
+      <ng-template #bodyTemplate let-item>
+        <td>{{ item.title }}</td>
+        <td>{{ item.body }}</td>
+        <td>Usuario {{ item.userId }}</td>
+        <td class="flex">
+          <button mat-icon-button (click)="handleEditPost(item)">
+            <mat-icon svgIcon="edit" />
+          </button>
+        </td>
+      </ng-template>
+    </app-data-table>
+  </div>
+  <div class="mobile">
+    <app-cards-post [posts]="postsList()" (editPost)="handleEditPost($event)" />
+  </div>
+
   <div class="container-paginator">
     <app-paginator
       [(ngModel)]="currentPage"

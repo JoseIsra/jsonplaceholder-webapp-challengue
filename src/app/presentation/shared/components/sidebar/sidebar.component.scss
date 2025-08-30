@@ -1,14 +1,7 @@
 $btnColor: #e0e0e0;
 %item-hover {
-  background-color: var(--gray-400);
-  .mat-icon {
-    ::ng-deep path {
-      stroke: var(--primary-color);
-    }
-  }
-  span {
-    color: var(--primary-color);
-  }
+  background-color: var(--primary-color-100);
+  color: var(--primary-color);
 }
 .sidebar {
   display: flex;
@@ -23,6 +16,8 @@ $btnColor: #e0e0e0;
 
   &-brand {
     padding: 10px 20px;
+    font-weight: 700;
+    font-size: 1.5rem;
   }
 
   &-itemsBox {
@@ -37,7 +32,7 @@ $btnColor: #e0e0e0;
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 1rem;
     padding: 0;
     margin: 0;
   }
@@ -45,10 +40,19 @@ $btnColor: #e0e0e0;
   &-item {
     a {
       padding: 10px 20px;
-      font-size: 14px;
+      font-size: 16px;
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      border-radius: 8px;
+      outline: none;
+      color: var(--black-500);
       &.active {
         background-color: var(--primary-color);
         color: var(--white);
+      }
+      &:hover {
+        @extend %item-hover;
       }
     }
   }

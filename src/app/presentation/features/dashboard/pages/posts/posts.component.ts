@@ -14,6 +14,7 @@ import { Paginator } from '@/presentation/shared/components/paginator/paginator.
 import { DialogTriggerService } from '@/presentation/shared/services/dialog-trigger/dialog-trigger.service';
 import { CreatePostDialogComponent } from './components/create-post-dialog/create-post-dialog.component';
 import { UsersStoreService } from '../usuarios/services/usersStore.service';
+import { CardsPostComponent } from './components/cards-post/cards-post.component';
 
 @Component({
   selector: 'app-posts',
@@ -27,6 +28,7 @@ import { UsersStoreService } from '../usuarios/services/usersStore.service';
     MatButtonModule,
     MatIcon,
     NgTemplateOutlet,
+    CardsPostComponent,
   ],
 })
 export class PostsComponent implements OnInit, OnDestroy {

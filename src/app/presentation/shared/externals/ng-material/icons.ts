@@ -6,4 +6,5 @@ export const ICONS = [
   { name: 'trash', url: 'trash.svg' },
   { name: 'view', url: 'view.svg' },
   { name: 'search', url: 'search.svg' },
+  { name: 'hamburger', url: 'hamburger-menu.svg' },
 ];

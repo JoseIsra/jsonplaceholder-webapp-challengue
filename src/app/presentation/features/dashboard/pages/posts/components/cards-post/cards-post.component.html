@@ -1,0 +1,26 @@
+<section class="cards">
+  @for (post of posts(); track post.id) {
+    <div class="card">
+      <div class="card-box flex flex-col">
+        <p class="card-postname m-0">{{ post.title }}</p>
+        <div class="card-details flex flex-col">
+          <div class="card-detail">
+            <span class="fw-500">Creado por: </span>
+            <span class="fw-400 m-0">Usuario {{ post.userId }}</span>
+          </div>
+          <div class="card-detail flex-col">
+            <span class="fw-500">Contenido: </span>
+            <p class="fw-400 m-0 card-postbody">{{ post.body }}</p>
+          </div>
+        </div>
+      </div>
+      <button mat-button class="card-button" (click)="handleEditPost(post)">
+        Editar
+      </button>
+    </div>
+  } @empty {
+    <div class="w-full empty">
+      <span>Sin resultados</span>
+    </div>
+  }
+</section>

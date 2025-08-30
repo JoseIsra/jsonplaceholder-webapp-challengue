@@ -1,5 +1,6 @@
 .wrapper {
-  width: 475px;
+  max-width: 475px;
+  min-width: 285px;
   .title {
     font-size: 1.2rem;
   }

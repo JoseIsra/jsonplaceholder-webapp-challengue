@@ -1,0 +1,33 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    width: 100%;
+
+    &-username {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    &-button {
+      margin-top: 8px;
+      padding: 18px 32px;
+      border-radius: 8px;
+      border: 1px solid var(--primary-color-400);
+      width: 100%;
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    &-box {
+      margin-top: 12px;
+      gap: 1rem;
+    }
+    &-details {
+      gap: 1rem;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<section class="cards">
+  @for (user of users(); track user.id) {
+    <div class="card">
+      <div class="card-box flex flex-col">
+        <p class="card-username">{{ user.name }}</p>
+        <div class="card-details flex flex-col">
+          <div class="card-detail">
+            <span class="fw-500">Usuario: </span>
+            <span class="fw-400 m-0">{{ user.username }}</span>
+          </div>
+          <div class="card-detail">
+            <span class="fw-500">Tel: </span>
+            <span class="fw-400 m-0">{{ user.phone }}</span>
+          </div>
+        </div>
+        <div class="card-detail">
+          <span class="fw-500">Email: </span>
+          <span class="fw-400 m-0">{{ user.email }}</span>
+        </div>
+      </div>
+
+      <button
+        mat-button
+        class="card-button"
+        (click)="handleOpenUserDetails(user)"
+      >
+        Ver detalle
+      </button>
+    </div>
+  } @empty {
+    <div class="w-full empty">
+      <span>Sin resultados</span>
+    </div>
+  }
+</section>
