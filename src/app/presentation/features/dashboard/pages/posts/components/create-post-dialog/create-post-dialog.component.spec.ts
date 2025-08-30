@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreatePostDialogComponent } from './create-post-dialog.component';
 
@@ -9,14 +6,11 @@ describe('CreatePostDialogComponent', () => {
   let component: CreatePostDialogComponent;
   let fixture: ComponentFixture<CreatePostDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CreatePostDialogComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [CreatePostDialogComponent],
+    });
+
     fixture = TestBed.createComponent(CreatePostDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

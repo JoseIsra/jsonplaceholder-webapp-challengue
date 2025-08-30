@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginatorComponent } from './paginator.component';
 
@@ -9,14 +6,8 @@ describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
   let fixture: ComponentFixture<PaginatorComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PaginatorComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
+    TestBed.configureTestingModule({});
     fixture = TestBed.createComponent(PaginatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

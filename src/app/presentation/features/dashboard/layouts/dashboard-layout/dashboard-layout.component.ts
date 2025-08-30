@@ -1,5 +1,4 @@
 import { SidebarComponent } from '@/presentation/shared/components/sidebar/sidebar.component';
-import { DialogTriggerService } from '@/presentation/shared/services/dialog-trigger/dialog-trigger.service';
 import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -25,8 +24,6 @@ export class DashboardLayoutComponent {
   };
 
   mobileSidebarDialogVisible = signal(false);
-
-  constructor(private triggerDialogService: DialogTriggerService) {}
 
   async donwloadFile(code: string) {
     const link = this.LINKS[code];

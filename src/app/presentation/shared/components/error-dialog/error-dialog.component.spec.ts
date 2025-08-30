@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorDialogComponent } from './error-dialog.component';
 
@@ -9,14 +6,8 @@ describe('ErrorDialogComponent', () => {
   let component: ErrorDialogComponent;
   let fixture: ComponentFixture<ErrorDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ErrorDialogComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
+    TestBed.configureTestingModule({});
     fixture = TestBed.createComponent(ErrorDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
