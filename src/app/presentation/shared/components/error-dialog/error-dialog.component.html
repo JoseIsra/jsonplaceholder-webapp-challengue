@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="w-full flex align-center justify-end">
+    <button mat-icon-button type="button" (click)="closeDialog()">
+      <mat-icon svgIcon="close" />
+    </button>
+  </div>
+  <div class="content">
+    <p class="fw-400 m-0">{{ errorMessage }}</p>
+  </div>
+
+  <div class="action">
+    <button mat-button (click)="closeDialog()" type="submit">Aceptar</button>
+  </div>
+</div>

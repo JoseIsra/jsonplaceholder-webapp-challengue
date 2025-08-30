@@ -12,6 +12,7 @@
       [value]="value()"
       (input)="handleInputChanged($event)"
     />
+    <ng-content></ng-content>
   </div>
   @if (showError()) {
     <mat-error class="error"> {{ errorMsg() }} </mat-error>

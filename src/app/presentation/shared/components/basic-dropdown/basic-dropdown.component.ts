@@ -33,6 +33,7 @@ export class BasicDropdownComponent implements ControlValueAccessor {
   options = input<DropdownOption<any>[]>([]);
   showError = input(false);
   errorMsg = input('Campo obligatorio');
+  optionValue = input<string | undefined>();
 
   isDisabled = false;
   value: DropdownOption | undefined;

@@ -1,0 +1,49 @@
+<div class="details">
+  <div class="w-full details-header flex align-center justify-between">
+    <p class="fw-500 m-0">Detalles de Usuario</p>
+    <button mat-icon-button type="button" (click)="closeDialog()">
+      <mat-icon svgIcon="close" />
+    </button>
+  </div>
+  <div class="details-content">
+    <div class="details-user">
+      <p class="title">{{ userDetails?.name }}</p>
+      <ul>
+        <li>
+          <span class="highlight"
+            >Usuario:
+            <span class="normal">{{ userDetails?.username }}</span></span
+          >
+        </li>
+        <li>
+          <span class="highlight"
+            >Correo: <span class="normal">{{ userDetails?.email }}</span></span
+          >
+        </li>
+        <li>
+          <span class="highlight"
+            >Tel: <span class="normal">{{ userDetails?.phone }}</span></span
+          >
+        </li>
+        <li>
+          <span class="highlight"
+            >Ciudad:
+            <span class="normal">{{ userDetails?.address?.city }}</span></span
+          >
+        </li>
+        <li>
+          <span class="highlight"
+            >Calle
+            <span class="normal">{{ userDetails?.address?.street }}</span></span
+          >
+        </li>
+        <li>
+          <span class="highlight"
+            >Compañía:
+            <span class="normal">{{ userDetails?.company?.name }}</span></span
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -34,6 +34,7 @@ module.exports = tseslint.config(
       ],
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/consistent-type-definitions": "off",
+      "@angular-eslint/prefer-inject": "off",
     },
   },
   {
