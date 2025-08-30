@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { PostsComponent } from './posts.component';
 import { ObtenerPostsUseCase } from '@/domain/usecases/posts/obtener-posts/obtener-posts.usecase';
 import { PostStoreService } from './services/postStore.service';
@@ -7,9 +12,9 @@ import { UsersStoreService } from '../usuarios/services/usersStore.service';
 import { PostModel } from '@/domain/models/posts/posts.response.model';
 import { UserDto } from '@/data/dtos/users/users.response.dto';
 import { Paginator } from '@/presentation/shared/components/paginator/paginator.types';
-import { of, throwError } from 'rxjs';
-import { NoParam } from '@/domain/base/params/no-param.paylod';
 import { CreatePostDialogComponent } from './components/create-post-dialog/create-post-dialog.component';
+import { asyncData, asyncError } from '@/data/utils/testing/async-data';
+import { ErrorDialogComponent } from '@/presentation/shared/components/error-dialog/error-dialog.component';
 
 describe('PostsComponent', () => {
   let component: PostsComponent;
@@ -124,11 +129,14 @@ describe('PostsComponent', () => {
   });
 
   describe('handleGetPosts', () => {
-    it('should load posts successfully', () => {
-      mockObtenerPostsUseCase.execute.and.returnValue(of(mockPosts));
+    it('should load posts successfully', fakeAsync(() => {
+      mockObtenerPostsUseCase.execute.and.returnValue(asyncData(mockPosts));
 
+      spyOn(component, 'handleGetPosts').and.callThrough();
       component.handleGetPosts();
 
+      expect(component.loading()).toBe(true);
+      tick();
       expect(component.loading()).toBe(false);
       expect(mockPostStoreService.setPosts).toHaveBeenCalledWith(
         mockPosts.slice(0, component.ITEMS_PER_PAGE),
@@ -136,35 +144,33 @@ describe('PostsComponent', () => {
       expect(mockPostStoreService.setTotalPosts).toHaveBeenCalledWith(
         mockPosts,
       );
-    });
+    }));
 
-    it('should handle error when loading posts', () => {
-      const error = new Error('Failed to load posts');
-      mockObtenerPostsUseCase.execute.and.returnValue(throwError(() => error));
-      spyOn(console, 'error');
+    it('should handle error when loading posts', fakeAsync(() => {
+      const error = new Error('Sucedió algo inesperado al cargar posts');
+      mockObtenerPostsUseCase.execute.and.returnValue(asyncError(error));
+      spyOn(component, 'handleGetPosts').and.callThrough();
 
       component.handleGetPosts();
+      expect(component.loading()).toBe(true);
+      tick();
 
       expect(component.loading()).toBe(false);
-      expect(console.error).toHaveBeenCalledWith(error);
-    });
-
-    it('should set loading to true initially', () => {
-      mockObtenerPostsUseCase.execute.and.returnValue(of(mockPosts));
-
-      component.handleGetPosts();
-
-      // Verificar que loading se establece en true al inicio
-      expect(mockObtenerPostsUseCase.execute).toHaveBeenCalledWith(
-        new NoParam(),
-      );
-    });
+      expect(
+        mockDialogTriggerService.triggerDefaulDialog,
+      ).toHaveBeenCalledOnceWith(ErrorDialogComponent, {
+        data: {
+          message: error.message,
+        },
+      });
+    }));
   });
 
   describe('onPageChange', () => {
     it('should handle page change for first page', () => {
       const paginator: Paginator = { page: 1, lastPage: 3 };
 
+      spyOn(component, 'onPageChange').and.callThrough();
       component.onPageChange(paginator);
 
       expect(mockPostStoreService.setPosts).toHaveBeenCalledWith(
@@ -174,21 +180,25 @@ describe('PostsComponent', () => {
 
     it('should handle page change for middle page', () => {
       const paginator: Paginator = { page: 2, lastPage: 3 };
+      spyOn(component, 'onPageChange').and.callThrough();
 
       component.onPageChange(paginator);
+      const initFrom = (paginator.page - 1) * component.ITEMS_PER_PAGE;
 
       expect(mockPostStoreService.setPosts).toHaveBeenCalledWith(
-        mockPosts.slice(component.ITEMS_PER_PAGE, component.ITEMS_PER_PAGE * 2),
+        mockPosts.slice(initFrom, component.ITEMS_PER_PAGE + initFrom),
       );
     });
 
     it('should handle page change for last page', () => {
       const paginator: Paginator = { page: 3, lastPage: 3 };
+      spyOn(component, 'onPageChange').and.callThrough();
 
       component.onPageChange(paginator);
+      const initFrom = (paginator.page - 1) * component.ITEMS_PER_PAGE;
 
       expect(mockPostStoreService.setPosts).toHaveBeenCalledWith(
-        mockPosts.slice(component.ITEMS_PER_PAGE * 2),
+        mockPosts.slice(initFrom),
       );
     });
   });
@@ -197,6 +207,7 @@ describe('PostsComponent', () => {
     it('should trigger edit dialog with correct data', () => {
       const postToEdit: PostModel = mockPosts[0];
 
+      spyOn(component, 'handleEditPost').and.callThrough();
       component.handleEditPost(postToEdit);
 
       expect(mockDialogTriggerService.triggerDefaulDialog).toHaveBeenCalledWith(
@@ -214,6 +225,7 @@ describe('PostsComponent', () => {
 
   describe('handleCreatePost', () => {
     it('should trigger create dialog with correct data', () => {
+      spyOn(component, 'handleCreatePost').and.callThrough();
       component.handleCreatePost();
 
       expect(mockDialogTriggerService.triggerDefaulDialog).toHaveBeenCalledWith(

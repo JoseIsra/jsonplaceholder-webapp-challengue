@@ -1,8 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasicDropdownComponent } from './basic-dropdown.component';
-import { SelectModule } from 'primeng/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
 
 describe('Test Basic Dropdown Component', () => {
   let fixture: ComponentFixture<BasicDropdownComponent>;
@@ -10,8 +7,8 @@ describe('Test Basic Dropdown Component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MatFormFieldModule, SelectModule, FormsModule],
-      declarations: [BasicDropdownComponent],
+      imports: [],
+      declarations: [],
     });
     fixture = TestBed.createComponent(BasicDropdownComponent);
     component = fixture.componentInstance;

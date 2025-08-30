@@ -2,7 +2,7 @@
   @if (label().length > 0) {
     <span class="label">{{ label() }}</span>
   }
-  <div class="inner-wrapper" [class.--error]="showError()">
+  <div class="inner-wrapper">
     <input
       #inputElement
       data-testid="test-input"
@@ -14,7 +14,4 @@
     />
     <ng-content></ng-content>
   </div>
-  @if (showError()) {
-    <mat-error class="error"> {{ errorMsg() }} </mat-error>
-  }
 </div>

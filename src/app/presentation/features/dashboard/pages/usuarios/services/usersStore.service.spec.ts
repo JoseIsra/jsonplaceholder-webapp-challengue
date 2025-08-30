@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { UsersStoreService } from './usersStore.service';
 import { UserDto } from '@/data/dtos/users/users.response.dto';
 
-fdescribe('UsersStoreService', () => {
+describe('UsersStoreService', () => {
   let service: UsersStoreService;
 
   const mockUser: UserDto = {

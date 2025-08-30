@@ -1,5 +1,5 @@
 import { UserModel } from '@/domain/models/users/users.response.model';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -15,19 +15,13 @@ type DynamicData = {
   standalone: true,
   imports: [MatButtonModule, MatIcon],
 })
-export class UserDetailsComponent implements OnInit {
+export class UserDetailsComponent {
   userDetails: null | UserModel = null;
 
   constructor(
     private ref: DynamicDialogRef,
     private dynamicDialogConfig: DynamicDialogConfig,
-  ) {}
-
-  ngOnInit(): void {
-    this.prepareUserData();
-  }
-
-  prepareUserData() {
+  ) {
     const { userData } = this.dynamicDialogConfig.data as DynamicData;
     this.userDetails = userData as UserModel;
   }

@@ -15,6 +15,7 @@ import { DialogTriggerService } from '@/presentation/shared/services/dialog-trig
 import { CreatePostDialogComponent } from './components/create-post-dialog/create-post-dialog.component';
 import { UsersStoreService } from '../usuarios/services/usersStore.service';
 import { CardsPostComponent } from './components/cards-post/cards-post.component';
+import { ErrorDialogComponent } from '@/presentation/shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-posts',
@@ -71,17 +72,21 @@ export class PostsComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           this.loading.set(false);
-          console.error(error);
+          this.triggerDialog.triggerDefaulDialog(ErrorDialogComponent, {
+            data: {
+              message: error.message,
+            },
+          });
         },
       });
   }
 
   onPageChange(paginator: Paginator) {
-    const newPage = (paginator.page - 1) * this.ITEMS_PER_PAGE;
+    const initFrom = (paginator.page - 1) * this.ITEMS_PER_PAGE;
     const slicedUsers =
       paginator.page === paginator.lastPage
-        ? this.totalPosts().slice(newPage)
-        : this.totalPosts().slice(newPage, newPage + this.ITEMS_PER_PAGE);
+        ? this.totalPosts().slice(initFrom)
+        : this.totalPosts().slice(initFrom, initFrom + this.ITEMS_PER_PAGE);
 
     this.postStoreService.setPosts(slicedUsers);
   }

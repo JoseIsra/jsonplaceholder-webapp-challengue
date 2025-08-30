@@ -13,11 +13,7 @@
     (ngModelChange)="onChange($event)"
     [optionValue]="optionValue()"
     [disabled]="isDisabled"
+    emptyMessage="Sin resultados"
   >
   </p-select>
-  @if (showError()) {
-    <mat-error>
-      <span class="error">{{ errorMsg() }}</span>
-    </mat-error>
-  }
 </div>

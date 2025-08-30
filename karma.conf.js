@@ -27,7 +27,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require("path").join(__dirname, "./coverage/interbank-challengue"),
       subdir: ".",
-      reporters: [{ type: "html" }, { type: "text-summary" }],
+      reporters: [{ type: "lcov" }, { type: "html" }, { type: "text-summary" }],
     },
     reporters: ["mocha"],
     browsers: ["ChromeHeadless"],

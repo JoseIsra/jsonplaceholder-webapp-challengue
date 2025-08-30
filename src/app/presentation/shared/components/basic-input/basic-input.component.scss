@@ -15,17 +15,11 @@
     transition: all 0.5s ease;
     position: relative;
 
-    &.--error {
-      border-color: var(--error-alert);
-      &:focus-within {
-        box-shadow: unset;
-      }
-    }
-    &:not(.--error):focus-within {
+    &:focus-within {
       outline: 1px solid var(--primary-color);
       box-shadow: 0 0 0 1px var(--primary-color-500);
     }
-    &:not(.--error):hover {
+    &:hover {
       border-color: var(--primary-color-400);
     }
   }
@@ -39,11 +33,5 @@
     caret-color: var(--primary-color);
     padding-right: 20px;
     background-color: transparent;
-  }
-  .error {
-    position: relative;
-    margin-left: 20px;
-    font-size: var(--size-14);
-    color: var(--error-alert);
   }
 }

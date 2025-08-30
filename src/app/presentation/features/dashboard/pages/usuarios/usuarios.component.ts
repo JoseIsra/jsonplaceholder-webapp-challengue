@@ -26,6 +26,7 @@ import { BasicInputComponent } from '@/presentation/shared/components/basic-inpu
 import { textNormalizer } from '@/data/utils/helpers';
 import { UserDto } from '@/data/dtos/users/users.response.dto';
 import { UsersCardComponent } from './components/users-card/users-card.component';
+import { ErrorDialogComponent } from '@/presentation/shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -109,21 +110,22 @@ export class UsuariosComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           this.loading.set(false);
-          console.error(error);
+          this.dialogTriggerService.triggerDefaulDialog(ErrorDialogComponent, {
+            data: {
+              message: error.message,
+            },
+          });
         },
       });
   }
 
   onPageChange(paginator: Paginator) {
-    const newPage = (paginator.page - 1) * this.ITEMS_PER_PAGE;
+    const initFrom = (paginator.page - 1) * this.ITEMS_PER_PAGE;
 
     const slicedUsers =
       paginator.page === paginator.lastPage
-        ? this.userStoreService.totalUsers.slice(newPage)
-        : this.userStoreService.totalUsers.slice(
-            newPage,
-            newPage + this.ITEMS_PER_PAGE,
-          );
+        ? this.totalUsers().slice(initFrom)
+        : this.totalUsers().slice(initFrom, initFrom + this.ITEMS_PER_PAGE);
 
     this.userStoreService.setUsers(slicedUsers);
   }
@@ -146,7 +148,11 @@ export class UsuariosComponent implements OnInit, OnDestroy {
           });
         },
         error: (error) => {
-          console.error(error);
+          this.dialogTriggerService.triggerDefaulDialog(ErrorDialogComponent, {
+            data: {
+              message: error.message,
+            },
+          });
         },
       });
   }

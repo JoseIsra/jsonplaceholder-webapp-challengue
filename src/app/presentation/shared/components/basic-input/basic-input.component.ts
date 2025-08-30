@@ -30,8 +30,6 @@ import {
 export class BasicInputComponent implements ControlValueAccessor {
   label = input('');
   placeholder = input('');
-  showError = input(false);
-  errorMsg = input('');
   type = input<'text' | 'password'>('text');
 
   @ViewChild('inputElement', { static: true })
