@@ -1,0 +1,35 @@
+.wrapper {
+  table {
+    width: 100%;
+    thead {
+      ::ng-deep th {
+        font-weight: 500;
+        font-size: 14px;
+        padding: 12px;
+        color: var(--black-500);
+        border: 1px solid var(--gray-400);
+        background-color: var(--primary-color-100);
+
+        &:first-child {
+          border-radius: 8px 0 0 8px;
+        }
+        &:last-child {
+          border-radius: 0 8px 8px 0;
+        }
+      }
+    }
+    tbody {
+      ::ng-deep td {
+        font-weight: 400;
+        font-size: 14px;
+        padding: 4px;
+        color: #101010;
+        text-align: center;
+        border-bottom: 2px dashed var(--gray-702);
+        &:not(:last-child) {
+          padding-left: 12px;
+        }
+      }
+    }
+  }
+}

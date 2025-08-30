@@ -17,4 +17,14 @@
       --main-margin-left: 210px;
     }
   }
+
+  &-header {
+    gap: 1rem;
+    button {
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+  }
 }

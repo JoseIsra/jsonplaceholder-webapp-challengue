@@ -1,0 +1,12 @@
+.container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  &-data {
+    gap: 1rem;
+  }
+  &-paginator {
+    align-self: flex-end;
+  }
+}

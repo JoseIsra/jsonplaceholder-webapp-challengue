@@ -16,7 +16,7 @@
     position: relative;
 
     &.--error {
-      border-color: var(--error-alert-500);
+      border-color: var(--error-alert);
       &:focus-within {
         box-shadow: unset;
       }
@@ -27,12 +27,6 @@
     }
     &:not(.--error):hover {
       border-color: var(--primary-color-400);
-    }
-    .toggle-btn {
-      .mat-icon {
-        width: 20px;
-        height: 20px;
-      }
     }
   }
 
@@ -45,32 +39,11 @@
     caret-color: var(--primary-color);
     padding-right: 20px;
     background-color: transparent;
-    &::placeholder {
-      color: var(--gray-500);
-      font-family: 'sonoma', sans-serif;
-    }
   }
   .error {
     position: relative;
     margin-left: 20px;
     font-size: var(--size-14);
-    color: var(--error-alert-500);
-  }
-}
-
-::ng-deep .p-button {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  &.p-button-sm {
-    font-size: 13px;
-    padding: 4px;
-  }
-  &.p-button-outlined {
-    color: var(--gray-600);
-  }
-  &:focus {
-    box-shadow: unset;
+    color: var(--error-alert);
   }
 }
