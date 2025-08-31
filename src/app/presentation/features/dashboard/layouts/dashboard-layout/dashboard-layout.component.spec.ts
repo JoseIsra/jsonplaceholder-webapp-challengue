@@ -3,7 +3,7 @@ import { DashboardLayoutComponent } from './dashboard-layout.component';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { NgMaterialModule } from '@/presentation/shared/externals/ng-material/ng-material.module';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('DashboardLayoutComponent', () => {
   let component: DashboardLayoutComponent;
@@ -13,7 +13,7 @@ describe('DashboardLayoutComponent', () => {
     TestBed.configureTestingModule({
       imports: [NgMaterialModule],
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
         {
           provide: ActivatedRoute,
           useValue: {

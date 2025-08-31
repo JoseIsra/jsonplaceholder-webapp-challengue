@@ -16,7 +16,7 @@ import { ErrorDialogComponent } from '@/presentation/shared/components/error-dia
 import { UserDto } from '@/data/dtos/users/users.response.dto';
 import { PostModel } from '@/domain/models/posts/posts.response.model';
 import { NgMaterialModule } from '@/presentation/shared/externals/ng-material/ng-material.module';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { asyncData, asyncError } from '@/data/utils/testing/async-data';
 
 describe('CreatePostDialogComponent', () => {
@@ -87,7 +87,7 @@ describe('CreatePostDialogComponent', () => {
     TestBed.configureTestingModule({
       imports: [NgMaterialModule],
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
         FormBuilder,
         DynamicDialogConfig,
         { provide: DynamicDialogRef, useValue: mockDialogRefSpy },

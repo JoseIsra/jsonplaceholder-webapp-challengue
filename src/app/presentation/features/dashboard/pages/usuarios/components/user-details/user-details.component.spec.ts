@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserDetailsComponent } from './user-details.component';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { NgMaterialModule } from '@/presentation/shared/externals/ng-material/ng-material.module';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -21,7 +21,7 @@ describe('UserDetailsComponent', () => {
     TestBed.configureTestingModule({
       imports: [NgMaterialModule],
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
         DynamicDialogRef,
         { provide: DynamicDialogConfig, useValue: dynamicdialogconfigSpy },
       ],

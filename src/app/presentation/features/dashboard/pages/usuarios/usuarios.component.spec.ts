@@ -18,7 +18,7 @@ import { UserModel } from '@/domain/models/users/users.response.model';
 import { Param } from '@/domain/base/params/param.payload';
 import { Paginator } from '@/presentation/shared/components/paginator/paginator.types';
 import { NgMaterialModule } from '@/presentation/shared/externals/ng-material/ng-material.module';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 const mockUsers: UserDto[] = [
   {
@@ -105,7 +105,7 @@ describe('UsuariosComponent', () => {
     TestBed.configureTestingModule({
       imports: [NgMaterialModule],
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
 
         {
           provide: UsersStoreService,

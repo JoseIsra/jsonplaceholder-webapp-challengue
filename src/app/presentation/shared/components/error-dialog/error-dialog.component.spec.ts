@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorDialogComponent } from './error-dialog.component';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { NgMaterialModule } from '../../externals/ng-material/ng-material.module';
 
 describe('ErrorDialogComponent', () => {
@@ -21,7 +21,7 @@ describe('ErrorDialogComponent', () => {
     TestBed.configureTestingModule({
       imports: [NgMaterialModule],
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
         DynamicDialogRef,
         { provide: DynamicDialogConfig, useValue: dynamicdialogconfigSpy },
       ],
