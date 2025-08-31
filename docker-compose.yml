@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  interbank-challengue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: interbank-challengue
+    ports:
+      - "4000:80"
